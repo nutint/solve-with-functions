@@ -1,0 +1,15 @@
+@startuml
+scale 350 width
+
+state stoppedEngine as "Stopped Engine"
+state runningEngine as "Running Engine"
+state blewUpEngine as "Blew up Engine"
+
+[*] --> stoppedEngine: init
+stoppedEngine --> runningEngine: Start Engine
+runningEngine --> runningEngine: Accelerate/\nIncrease speed
+runningEngine --> runningEngine: Decelerate[Speed != 0]/\nReduce Speed
+runningEngine --> stoppedEngine: Stop Engine[Speed ==0]
+runningEngine --> blewUpEngine: Stop Engine[Speed > 0]
+
+@enduml
